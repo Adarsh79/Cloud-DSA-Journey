@@ -8,6 +8,5 @@ def new_string(s, key):
     return s[0] + new_string(s[1:], key)
 
 
-# string = input("Enter a string: ")
-string = "hello, my name is xAdarsh"
+string = input("Enter a string: ")
 print(new_string(string, "x"))
