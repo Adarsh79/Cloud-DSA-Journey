@@ -57,9 +57,16 @@ obj = LinkedListFunction()
 newHead = obj.create()
 obj.display(newHead)
 
-# obj.delete()
-# newHead = obj.head
-# print("\nThe List after deletion: ")
-# obj.display(newHead)
+# For head node deletion
+obj.delete()
+newHead = obj.head
+print("\nThe List after deletion: ")
+obj.display(newHead)
+print("\n")
 
-print(obj.search(23))
+# For searching a key
+print("The linked list is: ")
+obj.display(newHead)
+print("\n")
+key = int(input("Enter the key to search in the linked list: "))
+print(obj.search(key))
