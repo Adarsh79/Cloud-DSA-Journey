@@ -120,3 +120,8 @@ obj.display(newHead)
 print("\n")
 k = int(input("Enter the key to search in the linked list: "))
 print(obj.search(k))
+
+# For insertion at the front of the linked list
+
+obj.display(newHead)
+obj.insert_first(int(input("Enter item to insert at the front of the linked list: ")))
