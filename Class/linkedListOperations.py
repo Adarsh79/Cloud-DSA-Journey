@@ -27,17 +27,49 @@ class LinkedListFunction:
     def display(self, head):
         if head is None:
             return
-
-        print(head.data, " ", end=" ")
+        print(head.data, " ", end="")
         self.display(head.next)
 
-    def delete(self):
+    def delete_head(self):
         temp = self.head
         if temp is not None:
             self.head = temp.next
             temp.next = None
             del temp
             return self.head
+
+    def delete(self):
+        item = int(input("\n\nEnter the element you want to delete: "))
+        if self.head is not None:
+            temp = self.head
+            p = self.head
+
+            if temp.next is None:
+                if temp.data == item:
+                    self.head = self.delete_head()
+                else:
+                    print("The entered item is not valid!")
+
+            elif temp.next is not None and temp.data is item:
+                self.head = self.delete_head()
+
+            else:
+                temp = temp.next
+                while temp.next is not None:
+                    if temp.data == item:
+                        p.next = temp.next
+                        del temp
+                        return
+
+                    p = p.next
+                    temp = temp.next
+
+                    if temp.next is None and temp.data == item:
+                        del temp
+                        p.next = None
+                        return
+
+                print("\nInvalid key")
 
     def search(self, key):
         temp = self.head
@@ -52,6 +84,18 @@ class LinkedListFunction:
 
         return "\nElement not found!"
 
+    def insert_first(self, item):
+        if item != -1:
+            objc = node(item)
+            if self.head is None:
+                self.head = objc
+                return
+            else:
+                objc.next = self.head
+                self.head = objc
+                return
+        return -1
+
 
 obj = LinkedListFunction()
 newHead = obj.create()
@@ -64,9 +108,15 @@ print("\nThe List after deletion: ")
 obj.display(newHead)
 print("\n")
 
+# For deletion of a key element in the linked list
+obj.delete()
+print("\nThe List after deletion: ")
+obj.display(newHead)
+print("\n")
+
 # For searching a key
 print("The linked list is: ")
 obj.display(newHead)
 print("\n")
-key = int(input("Enter the key to search in the linked list: "))
-print(obj.search(key))
+k = int(input("Enter the key to search in the linked list: "))
+print(obj.search(k))
