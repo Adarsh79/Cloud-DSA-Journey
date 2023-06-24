@@ -96,6 +96,41 @@ class LinkedListFunction:
                 return
         return -1
 
+    def __length(self):
+        if self.head is None:
+            return 0
+
+        count = 1
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+            count += 1
+
+        return count
+
+    def insert(self, item, pos):
+        if pos == 1:
+            self.insert_first(item)
+            return
+
+        if pos <= self.__length():
+            new_node = Node(item)
+            count = 1
+            temp = self.head
+            while count != pos - 1:
+                temp = temp.next
+                count += 1
+
+            if pos == self.__length():
+                temp.next = new_node
+                return
+
+            new_node.next = temp.next
+            temp.next = new_node
+            return
+        print("Invalid index")
+        return -1
+
 
 obj = LinkedListFunction()
 newHead = obj.create()
@@ -125,3 +160,10 @@ print(obj.search(k))
 
 obj.display(newHead)
 obj.insert_first(int(input("Enter item to insert at the front of the linked list: ")))
+
+# For insertion at random position
+
+i = int(input("Enter the value to insert: "))
+index = int(input("Enter the position to insert at: "))
+obj.insert(i, index)
+obj.display(newHead)
