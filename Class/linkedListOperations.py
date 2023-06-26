@@ -30,6 +30,12 @@ class LinkedListFunction:
         print(head.data, " ", end="")
         self.display(head.next)
 
+    def print_reverse(self, head):
+        if head is None:
+            return
+        self.display(head.next)
+        print(head.data, " ", end="")
+
     def delete_head(self):
         temp = self.head
         if temp is not None:
@@ -100,8 +106,8 @@ class LinkedListFunction:
         if self.head is None:
             return 0
 
-        count = 1
         temp = self.head
+        count = 1
         while temp.next is not None:
             temp = temp.next
             count += 1
