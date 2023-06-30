@@ -50,9 +50,11 @@ class LinkedListFunction:
         return temp
 
     def reverse(self):
-        trav = self.head
-        temp = self.__reverse(trav)
+        if self.head is None:
+            return
+        self.__reverse(self.head)
         self.display()
+        print("\n")
         return temp["first"]
 
 
