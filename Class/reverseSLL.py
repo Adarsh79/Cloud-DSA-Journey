@@ -34,31 +34,18 @@ class LinkedListFunction:
         temp = self.head
         self.__display(temp)
 
-    def __reverse(self, head, tail=None):
-        if head is None:
-            trav = {"first": None, "second": None}
-            return trav
-        temp = self.__reverse(head.next, tail)
-        if temp["first"] is None:
-            temp["first"] = head
-            temp["second"] = head
-        else:
-            head.next = None
-            temp["second"].next = head
-            temp["second"] = head
-
-        return temp
-
     def reverse(self):
-        if self.head is None:
-            return
-        self.__reverse(self.head)
-        self.display()
-        print("\n")
-        return temp["first"]
+        prev = None
+        temp = self.head
+        while temp is not None:
+            trav = temp.next
+            temp.next = prev
+            prev = temp
+            temp = trav
+        self.head = prev
 
 
 obj = LinkedListFunction()
 obj.create()
-obj.display()
 obj.reverse()
+obj.display()
