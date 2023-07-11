@@ -6,7 +6,8 @@ def climb_stairs(n):
         return 0
     if n == 0:
         return 1
-    return climb_stairs(n - 3) + climb_stairs(n - 2) + climb_stairs(n - 1)
+    ans = climb_stairs(n - 3) + climb_stairs(n - 2) + climb_stairs(n - 1)
+    return ans
 
 
 num = int(input("Enter the number of stairs: "))
