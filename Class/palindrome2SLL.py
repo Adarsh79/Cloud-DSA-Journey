@@ -86,15 +86,13 @@ class LinkedList:
         mid = self.mid()
         temp = temp.next
 
-        while temp is not mid["address"].next:
+        while temp is not mid["address"]:
             newNode = Node(temp.data)
             comparison.next = newNode
             comparison = comparison.next
             temp = temp.next
 
         head2 = self.reverse(head2)
-
-        self.display_sub_ll(head2)
 
         return self.__is_palindrome(temp, head2)
 
