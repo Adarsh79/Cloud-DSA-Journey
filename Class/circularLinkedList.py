@@ -1,9 +1,7 @@
 class Node:
-    data = None
-    next = None
-
     def __init__(self, data):
         self.data = data
+        self.next = None
 
 
 class CircularLinkList:
@@ -11,37 +9,31 @@ class CircularLinkList:
         self.head = None
         self.tail = None
 
-    def is_empty(self):
-        return self.head is None
-
-    def append(self, data):
+    def insert(self, data):
         newNode = Node(data)
-        if self.is_empty():
-            newNode.next = newNode
-            self.head = newNode
-        else:
-            current = self.head
-            while current is not self.head:
-                current = current.next
-            current.next = newNode
+
+        if not self.head:
+            self.head = self.tail = newNode
             newNode.next = self.head
 
-        return self.head
+        else:
+            self.tail.next = newNode
+            self.tail = newNode
+            self.tail.next = self.head
 
     def display(self):
-        if self.is_empty():
+        if not self.head:
             print("The circular linked list is empty")
+            return
         else:
             current = self.head
-            while current is not self.head:
-                print(current.data, end="")
+            print(current.data, " ")
+            while current.next is not self.head:
                 current = current.next
+                print(current.data, "", end="")
 
 
 obj = CircularLinkList()
-obj.append(20)
-obj.append(2)
-obj.append(3)
-obj.append(4)
-obj.append(5)
+obj.insert(1)
+obj.insert(2)
 obj.display()
