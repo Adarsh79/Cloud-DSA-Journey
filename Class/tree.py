@@ -5,13 +5,11 @@ class Node:
     def __init__(self, data):
         self.data = data
         self.list = []
-        self.parent = None
 
 
 class TreeNode:
     def create(self, data=int(input("Enter the root data: "))):
         root = None
-        # data = int(input("Enter the Root data : "))
 
         if -1 != data:
             newNode = Node(data)
@@ -34,6 +32,21 @@ class TreeNode:
                     pendingNode.put(newNode)
         return root
 
+    def display(self, root):
+        if root is None:
+            return
+        print("Root data:", root.data)
+        pendingQueue = Queue()
+        pendingQueue.put(root)
+
+        while pendingQueue.qsize() > 0:
+            front = pendingQueue.get()
+            for i in range(len(front.list)):
+                print("Children of:", front.data, ":", front.list[i].data, end=" | ")
+                pendingQueue.put(front.list[i])
+            print()
+
 
 obj = TreeNode()
-obj.create()
+rootNode = obj.create()
+obj.display(rootNode)
