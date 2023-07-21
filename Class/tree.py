@@ -4,7 +4,7 @@ from queue import Queue
 class Node:
     def __init__(self, data):
         self.data = data
-        self.list = [None]
+        self.list = []
 
 
 def create(data=int(input("Enter the root data: "))):
@@ -81,25 +81,39 @@ def height(root):
     return count
 
 
-maximum = None
+maxElm = None
 
 
 def max_node(root):
-    global maximum
+    global maxElm
     if root is None:
         return
 
-    if maximum is None:
-        maximum = root
+    if maxElm is None:
+        maxElm = root
 
-    elif root.data > maximum.data:
-        maximum = root
+    elif root.data > maxElm.data:
+        maxElm = root
 
     for i in range(len(root.list)):
         max_node(root.list[i])
 
-    return maximum.data
+    return maxElm.data
+
+
+def count_leaf(root):
+    if root is None:
+        return 0
+
+    if len(root.list) == 0:
+        return 1
+    ans = 0
+    for i in range(len(root.list)):
+        ans += count_leaf(root.list[i])
+
+    return ans
 
 
 newTree = create()
-print(max_node(newTree))
+display(newTree)
+print("The number of leaf nodes are:", count_leaf(newTree))
