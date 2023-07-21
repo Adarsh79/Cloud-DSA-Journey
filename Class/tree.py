@@ -51,7 +51,7 @@ def depth_traversal(root):
     if root is None:
         return
     print("Value: ", root.data)
-    for i in range(0, len(root.list)):
+    for i in range(len(root.list)):
         self.depth_traversal(root.list[i])
 
 
@@ -101,5 +101,5 @@ def max_node(root):
     return maximum.data
 
 
-newNode = create()
-print(max_node(newNode))
+newTree = create()
+print(max_node(newTree))
