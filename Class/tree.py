@@ -4,49 +4,102 @@ from queue import Queue
 class Node:
     def __init__(self, data):
         self.data = data
-        self.list = []
+        self.list = [None]
 
 
-class TreeNode:
-    def create(self, data=int(input("Enter the root data: "))):
-        root = None
+def create(data=int(input("Enter the root data: "))):
+    root = None
 
-        if -1 != data:
-            newNode = Node(data)
-            root = newNode
+    if -1 != data:
+        newNode = Node(data)
+        root = newNode
 
-        else:
-            return root
-
-        pendingNode = Queue()
-        pendingNode.put(root)
-
-        while pendingNode.qsize() > 0:
-            front = pendingNode.get()
-            n = int(input(f"How many Children do you want to enter? : {front.data} : "))
-            if n > 0:
-                for i in range(n):
-                    data = int(input(f"Enter the children {front.data}'s data : "))
-                    newNode = Node(data)
-                    front.list.append(newNode)
-                    pendingNode.put(newNode)
+    else:
         return root
 
-    def display(self, root):
-        if root is None:
-            return
-        print("Root data:", root.data)
-        pendingQueue = Queue()
-        pendingQueue.put(root)
+    pendingNode = Queue()
+    pendingNode.put(root)
 
-        while pendingQueue.qsize() > 0:
-            front = pendingQueue.get()
-            for i in range(len(front.list)):
-                print("Children of:", front.data, ":", front.list[i].data, end=" | ")
-                pendingQueue.put(front.list[i])
-            print()
+    while pendingNode.qsize() > 0:
+        front = pendingNode.get()
+        n = int(input(f"How many Children do you want to enter? : {front.data} : "))
+        if n > 0:
+            for i in range(n):
+                data = int(input(f"Enter the children {front.data}'s data : "))
+                newNode = Node(data)
+                front.list.append(newNode)
+                pendingNode.put(newNode)
+    return root
 
 
-obj = TreeNode()
-rootNode = obj.create()
-obj.display(rootNode)
+def display(root):
+    if root is None:
+        return
+    print("Root data:", root.data)
+    pendingQueue = Queue()
+    pendingQueue.put(root)
+
+    while pendingQueue.qsize() > 0:
+        front = pendingQueue.get()
+        for i in range(len(front.list)):
+            print("Children of:", front.data, ":", front.list[i].data, end=" | ")
+            pendingQueue.put(front.list[i])
+        print()
+
+
+def depth_traversal(root):
+    if root is None:
+        return
+    print("Value: ", root.data)
+    for i in range(0, len(root.list)):
+        self.depth_traversal(root.list[i])
+
+
+def input_by_rec():
+    root = None
+    data = int(input("Enter the root data: "))
+    newNode = Node(data)
+    root = newNode
+
+    n = int(input("Enter the number of children: "))
+
+    for i in range(n):
+        child = self.input_by_rec()
+        if root.list[0] is None:
+            root.list.pop()
+        root.list.append(child)
+
+    return root
+
+
+def height(root):
+    count = 0
+    for i in range(len(root.list)):
+        count = max(count, self.height(root.list[i]))
+    count += 1
+
+    return count
+
+
+maximum = None
+
+
+def max_node(root):
+    global maximum
+    if root is None:
+        return
+
+    if maximum is None:
+        maximum = root
+
+    elif root.data > maximum.data:
+        maximum = root
+
+    for i in range(len(root.list)):
+        max_node(root.list[i])
+
+    return maximum.data
+
+
+newNode = create()
+print(max_node(newNode))
