@@ -31,5 +31,25 @@ def display(root):
     display(root.right)
 
 
+def searchBST(root, val):
+    if not root:
+        return False
+
+    if root.data == val:
+        return True
+
+    leftSubtree = searchBST(root.left, val)
+
+    if leftSubtree:
+        return True
+
+    rightSubtree = searchBST(root.right, val)
+
+    return rightSubtree
+
+
 rootNode = create()
-display(rootNode)
+if searchBST(rootNode, 8):
+    print(True)
+else:
+    print(False)
