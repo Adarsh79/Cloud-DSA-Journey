@@ -32,6 +32,7 @@ def display(root):
 
 
 def searchBST(root, val):
+    flag = False
     if not root:
         return False
 
@@ -41,11 +42,14 @@ def searchBST(root, val):
     leftSubtree = searchBST(root.left, val)
 
     if leftSubtree:
-        return True
+        flag = True
 
     rightSubtree = searchBST(root.right, val)
 
-    return rightSubtree
+    if rightSubtree:
+        flag = True
+
+    return flag
 
 
 rootNode = create()
