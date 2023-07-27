@@ -1,3 +1,6 @@
+from math import inf
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -52,8 +55,19 @@ def searchBST(root, val):
     return flag
 
 
+def max_min(root):
+    if not root:
+        return {"max": 0, "min": inf}
+
+    left = max_min(root.left)
+    right = max_min(root.right)
+
+    maxVal = max(left["max"], right["max"], root.data)
+    minVal = min(left["min"], right["min"], root.data)
+
+    ans = {"max": maxVal, "min": minVal}
+    return ans
+
+
 rootNode = create()
-if searchBST(rootNode, 8):
-    print(True)
-else:
-    print(False)
+print(max_min(rootNode))
