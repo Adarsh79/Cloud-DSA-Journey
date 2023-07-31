@@ -76,5 +76,21 @@ def sum_nodes(root):
     return root.data + sum_nodes(root.left) + sum_nodes(root.right)
 
 
+def delete_leaf(root, item):
+    if root is None:
+        return None
+
+    root.left = delete_leaf(root.left, item)
+    root.right = delete_leaf(root.right, item)
+
+    if root.left is None and root.right is None and root.data == item:
+        print(f"{root.data} node deleted.")
+        del root
+        return None
+
+    return root
+
+
 rootNode = create()
-print(sum_nodes(rootNode))
+delete_leaf(rootNode, 2)
+display(rootNode)
