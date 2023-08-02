@@ -75,7 +75,7 @@ def input_by_rec():
 def height(root):
     count = 0
     for i in range(len(root.list)):
-        count = max(count, self.height(root.list[i]))
+        count = max(count, height(root.list[i]))
     count += 1
 
     return count
@@ -116,4 +116,4 @@ def count_leaf(root):
 
 newTree = create()
 display(newTree)
-print("The number of leaf nodes are:", count_leaf(newTree))
+print(height(newTree))
