@@ -38,13 +38,13 @@ def __height(root):
     return max(__height(root.left) + 1, __height(root.right) + 1)
 
 
-def height(root):
+def balance(root):
     if not root:
         return True
 
     else:
-        left = height(root.left)
-        right = height(root.right)
+        left = balance(root.left)
+        right = balance(root.right)
         if left and right:
             if abs(__height(root.left) - __height(root.right)) <= 1:
                 return True
@@ -56,4 +56,4 @@ def height(root):
 
 newRoot = create()
 display(newRoot)
-print(height(newRoot))
+print(balance(newRoot))
