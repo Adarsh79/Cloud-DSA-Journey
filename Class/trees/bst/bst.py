@@ -29,7 +29,7 @@ def display(root):
     display(root.right)
 
 
-nodes = [3, 2, -1, -1, 7, 4, -1, -1, 8, -1, -1]
-nodes.reverse()
-rootNode = create(nodes)
-display(rootNode)
+# nodes = [3, 2, -1, -1, 7, 4, -1, -1, 8, -1, -1]
+# nodes.reverse()
+# rootNode = create(nodes)
+# display(rootNode)
