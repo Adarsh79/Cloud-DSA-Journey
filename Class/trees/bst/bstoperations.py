@@ -69,12 +69,30 @@ def delete(root, key):
             return temp
 
 
+def insert_duplicate(root, item):
+    if not root:
+        return None
+
+    if root.val == item:
+        newNode = Node(item)
+        newNode.right = root.right
+        root.right = newNode
+
+        return root
+
+    elif item < root.val:
+        insert_duplicate(root.left, item)
+    else:
+        insert_duplicate(root.right, item)
+
+    return root
+
+
 nodes = [5, 3, 1, 0, -1, -1, 2, - 1, - 1, 4, -1, -1, 13, 11, -1, -1, 15, 14, 12, -1, -1, -1, 16, -1, -1]
 nodes.reverse()
 rootNode = create(nodes)
 display(rootNode)
 print("\n")
 
-item = int(input("Enter the node to delete: "))
-delete(rootNode, item)
+insert_duplicate(rootNode, 4)
 display(rootNode)
