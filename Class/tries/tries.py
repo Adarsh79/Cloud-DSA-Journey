@@ -23,6 +23,20 @@ class Trie:
     def insertWord(self, word):
         self.__insert(self.root, word)
 
+    def __searchWord(self, root, word):
+        if word == "":
+            return root.finish
+
+        index = ord(word[0]) - ord('a')
+        if root.child[index] is None:
+            return False
+
+        return self.__searchWord(root.child[index], word[1:])
+
+    def searchWord(self, word):
+        return self.__searchWord(self.root, word)
+
 
 ob = Trie()
 ob.insertWord("alcohol")
+print(ob.searchWord("alcohol"))
