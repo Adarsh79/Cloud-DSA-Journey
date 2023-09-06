@@ -43,7 +43,7 @@ I'll keep track of my progress and highlight the key milestones and projects com
 - [x] Implemented Linked Lists
 - [x] Explored Stacks and Queues
 - [x] Built Binary Search Trees
-- [ ] Learned Hashing Techniques
+- [x] Learned Hashing Techniques
 - [ ] Explored Graph Algorithms
 - [x] Implemented Sorting Algorithms
 - [ ] Explored Searching Algorithms
